@@ -7,16 +7,12 @@ import { Student } from "./models/student";
   templateUrl: './app.component.html',
   styleUrls: ['./app.component.css']
 })
-export class AppComponent implements OnInit {
+export class AppComponent
+{
   title = 'Code_Job_Angular_Api1';
-  students:Student[] = [];
+  students = Array<Student>();
 
-  constructor(private service: StudentService) {}
-  
-  ngOnInit() {
-    this.service.getStudents()
-      .subscribe(response => {
-        this.students = response;
-      });
+  constructor(private studentService: StudentService) {
+    this.studentService.getStudents().subscribe(response => { this.students = response; });
   }
 }
